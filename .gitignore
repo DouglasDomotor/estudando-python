@@ -1,0 +1,35 @@
+# Ignora arquivos Python compilados
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ambientes virtuais
+venv/
+env/
+.env/
+
+# Arquivos de configuração e senhas
+*.env
+*.ini
+*.cfg
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+
+# Arquivos temporários
+*.log
+*.tmp
+*.bak
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Sistema operacional (Windows, macOS)
+Thumbs.db
+.DS_Store
+
+# Arquivos do OneDrive
+*.tmp
+~$*
