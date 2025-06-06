@@ -1,4 +1,6 @@
-from src.subtrair import subtrair
+from subtrair import subtrair
+import pytest
 
-print("Testando 1-1:", subtrair(1, 1) == 0)
-print("Testando 3-1:", subtrair(3, 1) == 2)
+def test_subtrair():
+    assert subtrair(1, 1) == 0
+    assert subtrair(3, 1) == 2
