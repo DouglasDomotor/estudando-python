@@ -1,6 +1,10 @@
 from subtrair import subtrair
 import pytest
 
-def test_subtrair():
-    assert subtrair(1, 1) == 0
-    assert subtrair(3, 1) == 2
+@pytest.mark.parametrize("numero_1, numero_2, resultado",[
+    (5, 2, 3),
+    (10, 3, 7)
+])
+
+def test_subtrair(numero_1, numero_2, resultado):
+    assert subtrair(numero_1, numero_2) == resultado
