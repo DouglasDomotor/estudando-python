@@ -1,5 +1,9 @@
 from soma import soma
+import pytest
 
-def test_soma():
-    assert soma(1, 1)==2
-    assert soma(2, 1)==3
+@pytest.mark.parametrize("numero_1, numero_2, resultado",[
+    (2, 2, 4),
+])
+
+def test_soma(numero_1, numero_2, resultado):
+    assert soma(numero_1, numero_2) == resultado
