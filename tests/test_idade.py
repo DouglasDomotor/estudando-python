@@ -10,3 +10,4 @@ from idade import calcular_idade
 ]) 
 def test_vcalculo_idade(nascimento, idade_esperada):
     assert calcular_idade(nascimento) == idade_esperada
+    
