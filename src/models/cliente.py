@@ -1,4 +1,4 @@
-from calculadora_idade import *
+from utils.calculadora_idade import CalculadoraIdade
 
 class Cliente:
     def __init__(self, nome, data_nascimento):
@@ -10,3 +10,4 @@ class Cliente:
     
     def idade(self):
         return CalculadoraIdade.calcular_idade(self.data_nascimento)
+
