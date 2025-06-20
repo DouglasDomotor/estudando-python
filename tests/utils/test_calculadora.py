@@ -1,4 +1,4 @@
-from calculadora import *
+from utils.calculadora import *
 import pytest
 
 def test_soma():

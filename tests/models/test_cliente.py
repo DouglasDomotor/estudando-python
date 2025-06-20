@@ -1,4 +1,4 @@
-from cliente import Cliente
+from models.cliente import Cliente
 from freezegun import freeze_time
 import pytest
 

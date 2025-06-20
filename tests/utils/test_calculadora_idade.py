@@ -1,4 +1,4 @@
-from calculadora_idade import CalculadoraIdade
+from utils.calculadora_idade import CalculadoraIdade
 from freezegun import freeze_time
 import pytest
 
