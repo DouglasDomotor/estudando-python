@@ -88,34 +88,80 @@ def test_executar_ordem_venda_sem_ter_acoes():
     cliente.executar_ordem(ordem_venda)
     
     assert len(cliente.acoes) == 0
-  
 
-# def test_executar_ordem():
-#     cliente = Cliente("Douglas", "05/11/1982")
+def test_acresentar_ordem():
+    cliente = Cliente("Douglas", "05/11/1982")
 
-#     ordem_compra1 = Ordem('compra', 'VALE3', 100, 45.00)
-#     cliente.executar_ordem(ordem_compra1)
+    ordem_compra_um = Ordem('compra', 'VALE3', 100, 45.00)
+    cliente.executar_ordem(ordem_compra_um)
 
-#     acao = cliente.acoes[0]
+    assert len(cliente.ordens) == 1
 
-#     assert acao.codigo == "VALE3"
-#     assert acao.quantidade == 100
-#     assert acao.saldo() == 4500
 
-#     ordem_compra2 = Ordem('compra', 'VALE3', 10, 45.00)
-#     cliente.executar_ordem(ordem_compra2)
+def test_acrescentar_ordem():
 
-#     assert acao.quantidade == 110
-#     assert acao.saldo() == 4950
+    cliente = Cliente("Douglas", "05/11/1982")
 
-#     ordem_venda1 = Ordem('venda', 'VALE3', 10, 50.00)
-#     cliente.executar_ordem(ordem_venda1)
+    ordens = [
+        Ordem('compra', 'VALE3', 100, 45.00),
+        Ordem('compra', 'PETR4', 100, 45.00),
+        Ordem('compra', 'VALE3', 100, 45.00),
+        Ordem('venda', 'VALE3', 100, 45.00)
+    ]
+    
+    for ordem in ordens:
+        cliente.executar_ordem(ordem)
 
-#     assert acao.quantidade == 100
-#     assert acao.saldo() == 4500
+    assert len(cliente.ordens) == 4
 
-#     ordem_venda_inexistente = Ordem('venda', 'PETR3', 100, 30.00)
-#     cliente.executar_ordem(ordem_venda_inexistente)
 
-#     codigos = [a.codigo for a in cliente.acoes]
-#     assert 'PETR3' not in codigos   
+def test_calcular_total_vendas():
+
+    cliente = Cliente("Douglas", "05/11/1982")
+
+    ordens = [
+        Ordem('venda', 'VALE3', 100, 20.00),
+        Ordem('venda', 'PETR4', 100, 10.00),
+        Ordem('compra', 'VALE3', 100, 20.00),
+        Ordem('venda', 'VALE3', 100, 20.00)
+    ]
+
+    for ordem in ordens:
+        cliente.executar_ordem(ordem)
+
+    total = cliente.calcular_total_vendas()
+
+    assert total == 5000.00
+
+def test_calculo_de_ir():
+
+    cliente = Cliente("Douglas", "05/11/1982")
+
+    ordens = [
+        Ordem('venda', 'VALE3', 500, 20.00),
+        Ordem('venda', 'PETR4', 1000, 10.00),
+        Ordem('compra', 'VALE3', 1000, 20.00)   
+    ]
+
+    for ordem in ordens:
+        cliente.executar_ordem(ordem)
+
+    total = cliente.calculo_de_ir()
+
+    assert total == 3000.00
+
+def test_sem_calculo_de_ir():
+
+    cliente = Cliente("Douglas", "05/11/1982")
+
+    ordens = [
+        Ordem('venda', 'VALE3', 500, 20.00),
+        Ordem('compra', 'VALE3', 1000, 20.00)   
+    ]
+
+    for ordem in ordens:
+        cliente.executar_ordem(ordem)
+
+    total = cliente.calculo_de_ir()
+
+    assert total == 0

@@ -52,10 +52,29 @@ class Cliente:
             return acao
   
     def executar_ordem(self, ordem):
+        self.ordens.append(ordem)
         if ordem.tipo == 'compra':
             acao = self.localizar_ou_criar_acao(ordem)
             acao.quantidade += ordem.quantidade
         elif ordem.tipo == 'venda':
+#            self.total_vendas += ordem.quantidade * ordem.valor
             self.processar_venda(ordem)
+            
         else:
-            print("Tipo de ordem inválido. Use 'compra' ou 'venda'.")                 
+            print("Tipo de ordem inválido. Use 'compra' ou 'venda'.")
+        
+    def calcular_total_vendas(self):
+        total = 0
+        for ordem in self.ordens:
+            if ordem.tipo == 'venda':
+                total += ordem.quantidade * ordem.valor
+        return total
+
+    def calculo_de_ir(self):
+        total = self.calcular_total_vendas() 
+        if total >= 20000:
+            imposto = total * 0.15
+        else:
+            imposto = 0.0
+        return imposto   
+    
