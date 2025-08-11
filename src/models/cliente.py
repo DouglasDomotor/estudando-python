@@ -67,7 +67,7 @@ class Cliente:
         total = 0
         for ordem in self.ordens:
             if ordem.tipo == 'venda':
-                total += ordem.quantidade * ordem.valor
+                total += ordem.total()
         return total
 
     def calculo_de_ir(self):

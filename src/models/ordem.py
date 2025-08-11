@@ -5,3 +5,5 @@ class Ordem:
         self.quantidade = quantidade
         self.valor = valor
         
+    def total(self):
+        return self.quantidade * self.valor
